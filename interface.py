@@ -12,9 +12,15 @@ def add_contact():
     clear()
     first_name = input('\33[96mИмя:\33[0m ')
     last_name = input('\33[96mФамилия:\33[0m ')
+    father_name = input('\33[96mОтчество:\33[0m ')
     phone_number = input('\33[96mНомер телефона:\33[0m ')
-    description = input('\33[96mОписание:\33[0m ')
+    description = input('\33[96mКомментарий:\33[0m ')
     # TODO: Запустить сохранение контакта с помощью модуля controller
+    open_contacts(open_contacts_menu)
+
+def delete_contact():
+    input('Введите id контакта: ')
+    # TODO: Дать возможность удалить контакт
     open_contacts(open_contacts_menu)
 
 def find_by_name():
@@ -88,6 +94,7 @@ def clear():
 
 open_contacts_menu = {
     'Добавить новый контакт' : lambda: add_contact(),
+    'Удалить контакт': lambda: delete_contact(),
     'Назад' : lambda: open_menu(main_menu),
 }
 search_menu = {
