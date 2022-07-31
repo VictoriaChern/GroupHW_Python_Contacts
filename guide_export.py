@@ -73,7 +73,7 @@ def to_dictionary(keys: list, lst):
 
 
 
-def to_json(text: dict):
+def to_json(text: list):
     '''
     Запись данных в json файл
     '''
