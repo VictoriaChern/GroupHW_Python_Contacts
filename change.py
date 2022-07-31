@@ -5,9 +5,10 @@ def add_contact():
     id = input('введите номер id')                    
     name = input('Имя: ')
     surname = input('Фамилия: ')
+    middlename = input ('Отчество:)
     phone = input('Номер телефона: ')
     comment = input('Комментарий: ')
-    return [id, name, surname, phone, comment]
+    return [id, name, surname, middlename, phone, comment]
 
     def write_data_one_string(data):
         data_str = ''
