@@ -1,24 +1,16 @@
-# from statistics import mode
-# import  model_mult as model
-# import view
 
-# def button_click():
-#     value_a = view.get_value()
-#     value_b = view.get_value()
-#     model.init(value_a, value_b)
-#     result = model.do_it()
-#     view.view_data(result, "resul")
 from pprint import pprint
-import export
-import import
+import Contact_change
+import import_contacts
 import interface
 import change
-filename = "phonebook.json"
+import guide_export
+filename = "phones.txt"
 
 formatted_result = pformat(result)
 print(formatted_result)
 
-phonebook = load_phonebook(filename) # скачивание телефонной книги
+phonebook = load_phonebook(phones_csv) # скачивание телефонной книги
 pretty_print(phonebook)
 
 
@@ -30,7 +22,7 @@ search_res = search_by_phone(phonebook, 'введите номер целико�
 pretty_print(search_res)
 assert len(search_res) == 2
 
-assert len(search_by_name(phonebook, 'ввдеите ФИО')) == 0
+assert len(search_by_name(phonebook, 'введите ФИО')) == 0
 phonebook = add_record(phonebook, 'введите телефон с описанием', [
     {
         'описание': 'мобильный',
@@ -67,7 +59,7 @@ assert len(search_by_name(phonebook, 'ФИО')) == 0
 
 pretty_print(phonebook)
 
-save_phonebook(filename, phonebook)
+save_phonebook(phones.txt, phonebook)
 
 
 
