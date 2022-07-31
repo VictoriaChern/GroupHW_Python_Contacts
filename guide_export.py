@@ -62,8 +62,8 @@ def to_dictionary(keys: list, lst):
     dict = {}
     #конструкция объединяет строки комментария в одну, иначе, если комментарий больше одного слова записывается только первое
     if len(keys) < len(lst):
-        for i in range(5,len(lst)):
-            lst[4] += ' ' + lst[i]
+        for i in range(6,len(lst)):
+            lst[5] += ' ' + lst[i]
     #===================================================================
     for i in range(len(keys)):
         dict[keys[i]] = lst[i]
