@@ -10,7 +10,7 @@ filename = "phones.txt"
 formatted_result = pformat(result)
 print(formatted_result)
 
-phonebook = load_phonebook(phones_csv) # скачивание телефонной книги
+phonebook = load_phonebook(filename) # скачивание телефонной книги
 pretty_print(phonebook)
 
 
@@ -59,7 +59,7 @@ assert len(search_by_name(phonebook, 'ФИО')) == 0
 
 pretty_print(phonebook)
 
-save_phonebook(phones.txt, phonebook)
+save_phonebook(filename, phonebook)
 
 
 
