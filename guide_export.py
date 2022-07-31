@@ -44,6 +44,7 @@ def convert_to_json(file_path: str):
 
     with open(file_path, 'r', encoding='utf-8') as file:
         keys = []
+        people = []
         keys = file.readline()
         keys = keys.split()
 
@@ -52,7 +53,8 @@ def convert_to_json(file_path: str):
         for line in lines:
             line = line.split()
             data = to_dictionary(keys, line)
-            to_json(data)
+            people.append(data)
+        to_json(people)
       
 
 def to_dictionary(keys: list, lst):
