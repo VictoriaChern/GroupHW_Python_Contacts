@@ -8,6 +8,10 @@ def __init__():
     cur = conn.cursor()
 
 def find_obj(search: str) -> list:
+    '''
+    Метод, отвечающий за поиск по всем столбцам
+    search - текст/дата, по которой ищем
+    '''
     cur.execute(f"select * from Tasks where id like '%{search}%'\
         or description like '%{search}%'\
         or date like '%{search}%'\
@@ -16,18 +20,39 @@ def find_obj(search: str) -> list:
     return result
 
 def create_obj(data: list):
-    cur.execute(f"insert into tasks (description, date, status) values\
-        ({data[0]}, {data[1]}, {data[2]})")
+    '''
+    Метод, создающий "задачу"
+    data - список [Описание задачи, дата, статус]
+    '''
+
+    cur.execute(f"""insert into tasks (description, date, status) values\
+        (?,?,?)""", (data[0],data[1],data[2]))
     conn.commit()
+    return "Запись создана"
 
 def update_obj(id, column, data):
-    cur.execute(f"update Tasks set {column} = {data} where id == {id}")
+    '''
+    Метод, изменяющий "задачу"
+    id - id задачи в БД
+    column - изменяемый столбец
+    data - новые данные
+    '''
+    cur.execute(f"""update Tasks set {column} = ? where id == ?""", (data, id))
+    conn.commit()
+    return "Запись изменена"
 
 def delete_obj(id):
+    '''
+    Метод, удаляющий задачу
+    id - id задачи в БД
+    '''
     cur.execute(f"delete from tasks where id == {id}")
     conn.commit()
     return "Запись удалена"
 
 __init__()
 
-find_obj("te")
+print(find_obj(""))
+#print(create_obj(["test", "2022-01-24", "to do"]))
+#print(update_obj(3, "description", "test"))
+#print(delete_obj(3))
