@@ -1,6 +1,6 @@
 import datetime
 import pandas as pd
-import dbcontroller # написано под проект
+import dbcontroller as dbTasks # написано под проект
 # jsonarray = [
 #     {
 #     'name':'print text for TG',
@@ -22,7 +22,7 @@ import dbcontroller # написано под проект
     # }      
 # ]
 # df = pd.DataFrame(jsonarray) # строки с 4 по 24 из изначального кода
-df =  pd.DataFrame(dbTask.db) # написано под проект
+df =  pd.DataFrame(dbTasks.db) # написано под проект
 df.datetime = pd.to_datetime(df.datetime)
 dbcontroller.find_obj() # написано под проект
 
