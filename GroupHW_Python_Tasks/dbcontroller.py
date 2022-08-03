@@ -1,10 +1,11 @@
 #Модуль, реализующий взаимодейсвтие с БД
 import sqlite3
+import turtle
 
 def __init__():
     global conn
     global cur
-    conn = sqlite3.connect("GroupHW_Python_Tasks\dbTasks.db")
+    conn = sqlite3.connect("dbTasks.db")
     cur = conn.cursor()
 
 def find_obj(search: str) -> list:
@@ -19,12 +20,20 @@ def find_obj(search: str) -> list:
     result = cur.fetchall()
     return result
 
+def find_by_id(id) -> tuple:
+    '''
+    Метод, отвечающий за поиск по id
+    id - айди записи
+    '''
+    cur.execute(f"select * from Tasks where id == {id}")
+    result = cur.fetchone()
+    return result
+
 def create_obj(data: list):
     '''
     Метод, создающий "задачу"
     data - список [Описание задачи, дата, статус]
     '''
-
     cur.execute(f"""insert into tasks (description, date, status) values\
         (?,?,?)""", (data[0],data[1],data[2]))
     conn.commit()
@@ -52,7 +61,7 @@ def delete_obj(id):
 
 __init__()
 
-print(find_obj(""))
+print(find_by_id(1))
 #print(create_obj(["test", "2022-01-24", "to do"]))
-#print(update_obj(3, "description", "test"))
+#print(update_obj(1, "description", "test"))
 #print(delete_obj(3))
