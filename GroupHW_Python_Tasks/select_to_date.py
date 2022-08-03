@@ -43,6 +43,6 @@ def print_tasks(maskby):
         desc = row["description"]
         s.append(printformat.format(name,stime,etime,desc))
     return ''.join(s)
-
+ 
 print(print_tasks("2022-08-02")) # !!!! need help, что сюда нужно прописать, чтобы он выводил данные по дате, которую ввел пользователь. 
 
