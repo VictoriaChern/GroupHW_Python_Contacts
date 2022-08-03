@@ -4,7 +4,7 @@ import sqlite3
 def __init__():
     global conn
     global cur
-    conn = sqlite3.connect("GroupHW_Python_Tasks\dbTasks.db")
+    conn = sqlite3.connect("dbTasks.db")
     cur = conn.cursor()
 
 def find_obj(search: str) -> list:
@@ -54,5 +54,5 @@ __init__()
 
 print(find_obj(""))
 #print(create_obj(["test", "2022-01-24", "to do"]))
-#print(update_obj(3, "description", "test"))
+print(update_obj(1, "description", "test"))
 #print(delete_obj(3))
