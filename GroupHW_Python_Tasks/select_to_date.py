@@ -1,6 +1,6 @@
 import datetime
 import pandas as pd
-import dbcontroller# as dbTasks # написано под проект
+import dbcontroller#  написано под проект
 
 # jsonarray = [
 #     {
