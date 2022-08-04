@@ -1,6 +1,7 @@
 import datetime
 import pandas as pd
-import dbcontroller as dbTasks # написано под проект
+import dbcontroller# as dbTasks # написано под проект
+
 # jsonarray = [
 #     {
 #     'name':'print text for TG',
@@ -22,10 +23,10 @@ import dbcontroller as dbTasks # написано под проект
     # }      
 # ]
 # df = pd.DataFrame(jsonarray) # строки с 4 по 24 из изначального кода
-df =  pd.DataFrame(dbTasks.db) # написано под проект
-df.datetime = pd.to_datetime(df.datetime)
-dbcontroller.find_obj() # написано под проект
 
+dbTasks = dbcontroller.find_obj("") # написано под проект
+df =  pd.DataFrame(dbTasks) # написано под проект
+df.datetime = pd.to_datetime(df.datetime)
 printformat = """
 Task Name: {}
 Start time: {}
@@ -43,6 +44,6 @@ def print_tasks(maskby):
         desc = row["description"]
         s.append(printformat.format(name,stime,etime,desc))
     return ''.join(s)
- 
+
 print(print_tasks("2022-08-02")) # !!!! need help, что сюда нужно прописать, чтобы он выводил данные по дате, которую ввел пользователь. 
 
