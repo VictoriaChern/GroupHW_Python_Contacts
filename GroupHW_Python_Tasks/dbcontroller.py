@@ -5,7 +5,7 @@ import turtle
 def __init__():
     global conn
     global cur
-    conn = sqlite3.connect("dbTasks.db")
+    conn = sqlite3.connect("dbTasks.db", check_same_thread=False)
     cur = conn.cursor()
 
 def find_obj(search: str) -> list:
@@ -61,7 +61,7 @@ def delete_obj(id):
 
 __init__()
 
-print(find_by_id(1))
+#print(find_by_id(1))
 #print(create_obj(["test", "2022-01-24", "to do"]))
 #print(update_obj(1, "description", "test"))
 #print(delete_obj(3))

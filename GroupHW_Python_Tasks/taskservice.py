@@ -28,14 +28,25 @@ def find_task_by_id():
     Метод, отвечающий за поиск задачи по ID
     '''
     id = ask_id()
-    task = dbcontroller.find_by_id(id)
-    return task
+    return find_task_by_id(id)
 
-def find_tasks():
+def find_task_by_id(id: int):
+    '''
+    Метод, отвечающий за поиск задачи по ID
+    '''
+    return dbcontroller.find_by_id(id)
+
+def find_tasks_cmd():
     '''
     Метод, отвечающий за поиск задачи по всем колонкам
     '''
     search = input('Введите строку для поиска: ')
+    return find_tasks(search)
+
+def find_tasks(search: str):
+    '''
+    Метод, отвечающий за поиск задачи по всем колонкам
+    '''
     tasks = dbcontroller.find_obj(search)
     return tasks
 
@@ -45,9 +56,15 @@ def create_task():
     '''
     description = input('Введите описание задачи: ')
     date = ask_date()
-    status = 'to do'
-    result = dbcontroller.create_obj([description, date, status])
+    result = create_task(description, date)
     print(result)
+
+def create_task(description: str, date):
+    '''
+    Метод, отвечающий за создание новой задачи
+    '''
+    status = 'to do'
+    return dbcontroller.create_obj([description, date, status])
 
 def update_task_description():
     '''
@@ -59,8 +76,14 @@ def update_task_description():
         return
     print(f'Текущее описание задачи: {task[1]}')
     new_description = input('Введите описание задачи: ')
-    result = dbcontroller.update_obj(task[0], 'description', new_description)
+    result = update_task_description(task[0], new_description)
     print(result)
+
+def update_task_description(id: int, new_description: str):
+    '''
+    Метод, отвечающий за обновление описания задачи
+    '''
+    return dbcontroller.update_obj(id, 'description', new_description)
 
 def update_task_date():
     '''
@@ -72,19 +95,31 @@ def update_task_date():
         return
     print(f'Текущее значение даты: {task[2]}')
     new_date = ask_date()
-    result = dbcontroller.update_obj(task[0], 'date', new_date)
+    result = update_task_date(task[0], new_date)
     print(result)
+
+def update_task_date(id: int, new_date):
+    '''
+    Метод, отвечающий за обновление даты задачи
+    '''
+    return dbcontroller.update_obj(id, 'date', new_date)
 
 def delete_task():
     '''
     Метод, отвечающий за удаление задачи
     '''
     id = ask_id()
-    result = dbcontroller.delete_obj(id)
+    result = delete_task(id)
     print(result)
+
+def delete_task(id: int):
+    '''
+    Метод, отвечающий за удаление задачи
+    '''
+    return dbcontroller.delete_obj(id)
  
 #create_task()
-#tasks = find_tasks()
+#tasks = find_tasks_cmd()
 #print(tasks)
 #update_task_date()
 #update_task_description()
